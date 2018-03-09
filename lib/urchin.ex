@@ -34,14 +34,16 @@ defmodule Urchin do
       end)
       |> Enum.find_value(fn
         result = {:error, _} -> result
-        _ -> true
+        _ -> :ok
       end)
     end
   end
 
-  def string(min) do
+  def string(min \\ -1, max \\ nil) do
     fn
-      x when is_binary(x) -> String.length(x) > min
+      x when is_binary(x) ->
+        length = String.length(x)
+        length > min && length <= max
       _ -> false
     end
   end
@@ -59,14 +61,14 @@ defmodule Urchin.Example do
 
   def run() do
     data = %{
-      "lol" => "asdasd",
+      "lol" => "",
       "some" => %{
         "data" => "ok"
       },
     }
 
     validate data do
-      field: ["lol"], tests: [Urchin.string(0)] -> "lol is invalid"
+      field: ["lol"], tests: [Urchin.string(0, 10)] -> "lol is invalid"
       field: ["some", "data"], tests: [Urchin.required()] -> "Some data is invalid"
     end
   end
