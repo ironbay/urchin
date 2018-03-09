@@ -1,0 +1,3 @@
+%{
+  "dynamic_ex": {:git, "https://github.com/ironbay/dynamic_ex.git", "e61386fa2191e00818a7fb8207cb799990704bc7", []},
+}
