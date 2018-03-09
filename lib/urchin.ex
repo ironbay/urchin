@@ -43,7 +43,7 @@ defmodule Urchin do
     fn
       x when is_binary(x) ->
         length = String.length(x)
-        length > min && length <= max
+        length >= min && length <= max
       _ -> false
     end
   end
@@ -68,7 +68,7 @@ defmodule Urchin.Example do
     }
 
     validate data do
-      field: ["lol"], tests: [Urchin.string(0, 10)] -> "lol is invalid"
+      field: ["lol"], tests: [Urchin.string(1, 10)] -> "lol is invalid"
       field: ["some", "data"], tests: [Urchin.required()] -> "Some data is invalid"
     end
   end
