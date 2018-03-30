@@ -1,3 +1,4 @@
 %{
+  "dynamic": {:git, "https://github.com/ironbay/dynamic.git", "80a07ab8c3ba313ff6499c3964ea02f5342273bb", [sparse: "elixir"]},
   "dynamic_ex": {:git, "https://github.com/ironbay/dynamic_ex.git", "e61386fa2191e00818a7fb8207cb799990704bc7", []},
 }
